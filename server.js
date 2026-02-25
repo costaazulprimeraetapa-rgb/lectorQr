@@ -11,7 +11,12 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) res.setHeader('Content-Type', 'text/css');
+    if (path.endsWith('.js')) res.setHeader('Content-Type', 'application/javascript');
+  }
+}));
 
 // --- CONFIGURACIÓN ---
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
@@ -100,8 +105,8 @@ app.post('/buscar-qr', async (req, res) => {
   }
 });
 
-// Servir index.html en la raíz
-app.get('/', (req, res) => {
+// Servir index.html como fallback (después de archivos estáticos)
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
