@@ -100,6 +100,11 @@ app.post('/buscar-qr', async (req, res) => {
   }
 });
 
+// Servir index.html en la raíz
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`✅ Servidor backend corriendo en http://localhost:${PORT}`);
 });

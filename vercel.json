@@ -1,34 +1,12 @@
 {
   "version": 2,
-  "name": "lector-qr",
   "builds": [
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "styles.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "script.js",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/buscar-qr",
-      "dest": "server.js",
-      "methods": ["POST"]
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "server.js"
-    },
     {
       "src": "/(.*)",
       "dest": "server.js"
