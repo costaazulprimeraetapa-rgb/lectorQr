@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escáner QR + Google Sheets</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+</head>
+<body>
+  <div class="card">
+    <h1>Parqueadero <span>Costa Azul Primera Etapa</span></h1>
+    <div class="sub">
+      Control de pagos Parqueadero.
+    </div>
+
+    <div class="scanner-section" id="scannerContainer">
+      <video id="video" playsinline></video>
+    </div>
+
+    <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+      <button class="btn btn-primary" id="startBtn">▶ Iniciar escaneo</button>
+      <button class="btn" id="stopBtn">⏹ Detener cámara</button>
+    </div>
+
+    <div id="resultPanel" class="info-panel" style="display: none;">
+      <div class="info-title" style="display: flex; justify-content: space-between; align-items: center;">
+        <span>✅ Código escaneado</span>
+        <span class="badge" id="qrCodeDisplay"></span>
+      </div>
+      <div id="dataContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
